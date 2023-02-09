@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntroBGScript : MonoBehaviour
+public class MainBGScripts : MonoBehaviour
 {
     float scrollSpeed = 0.5f;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +14,10 @@ public class IntroBGScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(new Vector3(0.0f, -5 * scrollSpeed * Time.deltaTime, 0.0f));
-        if(this.transform.position.y <= -5.0f)
+        this.transform.Translate(new Vector3(0.0f, 5 * scrollSpeed * Time.deltaTime, 0.0f));
+        if (this.transform.position.y >= -1.0f)
         {
             scrollSpeed = 0.0f;
-            //
         }
     }
 }
