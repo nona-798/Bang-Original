@@ -13,12 +13,13 @@ public class IntroUIScripts : MonoBehaviour
     public TMP_Text buttonText;
 
     float alpha = 0.0f;
+    bool beep = false;
     bool alphaM = false;
     //public TMP_Text text;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -27,33 +28,33 @@ public class IntroUIScripts : MonoBehaviour
         //StartCoroutine(FadeInCoroutine());
         if (bg.transform.position.y <= -5.0f)
         {
-            while (alpha < 1.0f)
+            FadeIn();
+
+            if (Input.anyKey)
             {
-                alpha += 0.1f * Time.deltaTime;
-                image.color = new Color(1, 1, 1, alpha);
-                madeText.color = new Color(1, 1, 1, alpha);
-                buttonText.color = new Color(1, 1, 1, alpha);
-                if(alpha > 1.0f)
-                {
-                    break;
-                }
+                // Intro -> Main
+                NextScene();
             }
         }
-        if(Input.anyKey)
+    }
+
+    void FadeIn()
+    {
+        while (alpha < 1.0f)
         {
-            SceneManager.LoadScene("Main");
+            alpha += 0.05f * Time.deltaTime;
+            image.color = new Color(1, 1, 1, alpha);
+            madeText.color = new Color(1, 1, 1, alpha);
+            buttonText.color = new Color(1, 1, 1, alpha);
+            if (alpha > 1.0f)
+            {
+                break;
+            }
         }
     }
-    void Anybutton()
+
+    void NextScene()
     {
-        if (!alphaM)
-        {
-            alpha += 0.1f * Time.deltaTime;
-        }
-        else
-        {
-            alpha -= 0.1f * Time.deltaTime;
-        }
-        buttonText.color = new Color(1, 1, 1, alpha);
+        SceneManager.LoadScene("Main");
     }
 }

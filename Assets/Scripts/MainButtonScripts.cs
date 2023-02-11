@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
-public class StartScripts : MonoBehaviour
+public class MainButtonScripts : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        // start -> Intro
-        SceneManager.LoadScene("Intro");
+        
     }
 
     // Update is called once per frame
