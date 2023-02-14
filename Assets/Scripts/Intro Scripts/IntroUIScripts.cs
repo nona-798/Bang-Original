@@ -10,11 +10,13 @@ public class IntroUIScripts : MonoBehaviour
     public GameObject bg;
     public Image image;
     public TMP_Text madeText;
-    public TMP_Text buttonText;
+    public Text buttonText;
 
     float alpha = 0.0f;
-    bool beep = false;
-    bool alphaM = false;
+    float textAlpha = 1.0f;
+    bool Pop = false;
+    bool UpDown = false;
+
     //public TMP_Text text;
     // Start is called before the first frame update
     void Start()
@@ -29,10 +31,8 @@ public class IntroUIScripts : MonoBehaviour
         if (bg.transform.position.y <= -5.0f)
         {
             FadeIn();
-
-            if (Input.anyKey)
+            if(Input.anyKey)
             {
-                // Intro -> Main
                 NextScene();
             }
         }
@@ -42,18 +42,48 @@ public class IntroUIScripts : MonoBehaviour
     {
         while (alpha < 1.0f)
         {
-            alpha += 0.05f * Time.deltaTime;
+            alpha += 0.03f * Time.deltaTime;
             image.color = new Color(1, 1, 1, alpha);
             madeText.color = new Color(1, 1, 1, alpha);
             buttonText.color = new Color(1, 1, 1, alpha);
             if (alpha > 1.0f)
             {
+                //Pop = true;
                 break;
             }
         }
     }
 
-    void NextScene()
+    private void PopPop()
+    {
+        while(true)
+        {
+            if(textAlpha >= 1.0f)
+            {
+                UpDown = false;
+            }
+            else if(textAlpha <= 0.0f)
+            {
+                UpDown = true;
+            }
+            if(UpDown == false)
+            {
+                textAlpha -= 0.03f * Time.deltaTime;
+            }
+            else
+            {
+                textAlpha += 0.03f * Time.deltaTime;
+            }
+            buttonText.color = new Color(1, 1, 1, alpha);
+            if(Input.anyKey)
+            {
+                NextScene();
+                break;
+            }
+        }
+    }
+
+    private void NextScene()
     {
         SceneManager.LoadScene("Main");
     }
