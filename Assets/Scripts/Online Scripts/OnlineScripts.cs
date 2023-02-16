@@ -8,12 +8,6 @@ using TMPro;
 
 public class OnlineScripts : MonoBehaviour
 {
-    [SerializeField]
-    private List<Button> maxPlayerButton;
-
-    [SerializeField]
-    private List<Button> SetPlayOptionButton;
-
     private CreateGameRoomData roomData;
 
     // Start is called before the first frame update
@@ -22,29 +16,16 @@ public class OnlineScripts : MonoBehaviour
         
     }
 
-    private void UpdateMaxPlayerCount(int count)
+    void Update()
     {
-        roomData.maxPlayerCount = count;
-        if(count == 4)
-        {
+        
 
-        }
-        else if(count == 6)
-        {
-
-        }
-        else
-        {
-
-        }
     }
 }
 
 public class CreateGameRoomData
 {
-    public int maxPlayerCount;
-    public int SetPlayOption;
-    public int viceCount;
-    public int rinnegatoCount;
-    public int fuorileggeCount;
+    public int RoomNumber;
+    public int RoomMember;
+
 }
