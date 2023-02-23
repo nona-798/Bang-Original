@@ -10,7 +10,7 @@ public class UIScripts : MonoBehaviour
     [SerializeField]
     private GameObject bg;
     [SerializeField]
-    private Image image;
+    private Image bangImage;
     [SerializeField]
     private TMP_Text madeText;
     [SerializeField]
@@ -33,58 +33,5 @@ public class UIScripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (intro == false && bg.transform.position.y >= -5.0f)
-        {
-            bg.transform.Translate(new Vector3(0.0f, -5.0f * Time.deltaTime, 0.0f));
-        }
-        if (bg.transform.position.y <= -5.0f)
-        {
-            FadeIn();
-            if (Input.anyKey)
-            {
-                FadeOut();
-                intro = true;
-            }
-        }
-        if(intro == true)
-        {
-            bg.transform.Translate(new Vector3(0.0f, 5.0f * Time.deltaTime, 0.0f));
-            if (bg.transform.position.y <= -1.0f)
-            {
-                bg.transform.Translate(new Vector3(0.0f, 0.0f * Time.deltaTime, 0.0f));
-                IntroUI.gameObject.SetActive(false);
-                mainUI.gameObject.SetActive(true);
-            }
-        }
-        
-    }
-    void FadeIn()
-    {
-        while (alpha < 1.0f)
-        {
-            alpha += 0.03f * Time.deltaTime;
-            image.color = new Color(1, 1, 1, alpha);
-            madeText.color = new Color(1, 1, 1, alpha);
-            buttonText.color = new Color(1, 1, 1, alpha);
-            if (alpha > 1.0f)
-            {
-                //Pop = true;
-                break;
-            }
-        }
-    }
-    void FadeOut()
-    {
-        while (alpha > 0.0f)
-        {
-            alpha -= 0.03f * Time.deltaTime;
-            image.color = new Color(1, 1, 1, alpha);
-            madeText.color = new Color(1, 1, 1, alpha);
-            buttonText.color = new Color(1, 1, 1, alpha);
-            if (alpha < 0.0f)
-            {
-                break;
-            }
-        }
     }
 }

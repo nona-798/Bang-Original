@@ -7,45 +7,104 @@ using TMPro;
 
 public class MainUIScripts : MonoBehaviour
 {
-    public GameObject bg;
-    public Image image;
-    public Button start;
-    public Button howto;
-    public Button option;
-    public Button exit;
-    
+    [SerializeField]
+    private GameObject bg;
+    [SerializeField]
+    private Text buttonText;
+    [SerializeField]
+    private Image IntroUI;
+    [SerializeField]
+    private Image mainUI;
 
-    float alpha = 0.0f;
+    float scroll = 1.0f;
+    float alpha = 0.05f;
+    bool intro = false;
+    bool menu = false;
+    bool blink = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        image.color = new Color(1, 1, 1, 0);
-        start.gameObject.SetActive(false);
-        howto.gameObject.SetActive(false);
-        option.gameObject.SetActive(false);
-        exit.gameObject.SetActive(false);
+        IntroUI.gameObject.SetActive(false);
+        mainUI.gameObject.SetActive(false);
+        menu = false;
+        intro = true;
+        blink = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(bg.transform.position.y >= -1)
+        if(menu == false)
         {
-            FadeIn();
+            if (intro == true)
+            {
+                IntroScene();
+                Invoke("PressAnyKey",0.5f);
+            }
+            if (intro == false)
+            {
+                MainScene();
+            }
         }
-    }
-    void FadeIn()
-    {
-        image.color = new Color(1, 1, 1, 1);
-        ButtonVisible();
+        if(menu == true)
+        {
+
+        }
+        
     }
 
-    void ButtonVisible()
+    void IntroScene()
     {
-        start.gameObject.SetActive(true);
-        howto.gameObject.SetActive(true);
-        option.gameObject.SetActive(true);
-        exit.gameObject.SetActive(true);
+        while (bg.transform.position.y >= -5.0f) // 5에서 -5로
+        {
+            bg.transform.Translate(0.0f, -1.0f * scroll * Time.deltaTime / 2, 0.0f); // --
+            if (bg.transform.position.y <= -5.0f) // -5에서 멈추기
+            {
+                IntroUI.gameObject.SetActive(true); // intro visible
+                blink = true;
+                break;
+            }
+        }
+        if (Input.anyKey)
+        {
+            intro = false;
+            IntroUI.gameObject.SetActive(false);
+        }
+    }
+    void MainScene()
+    {
+        while (bg.transform.position.y <= -1.0f) // -5 에서 -1로
+        {
+            bg.transform.Translate(0.0f, 1.0f * scroll * Time.deltaTime / 2, 0.0f); // ++
+            if (bg.transform.position.y >= -1.0f) // -1에서 멈추기
+            {
+                mainUI.gameObject.SetActive(true); // main visible
+                menu = true;
+                break;
+            }
+        }
+    }
+    void PressAnyKey()
+    {
+        if (blink == true)
+        {
+            alpha = 0.0f;
+            buttonText.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+            if(alpha == 0.0f)
+            {
+                blink = false;
+            }
+        }
+        else
+        {
+            alpha = 1.0f;
+            buttonText.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+            if (alpha == 1.0f)
+            {
+                blink = true;
+            }
+        }
     }
 }
 
