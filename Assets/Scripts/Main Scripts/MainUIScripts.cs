@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.SceneManagement;
+using Mirror;
 
 public class MainUIScripts : MonoBehaviour
 {
@@ -105,6 +107,11 @@ public class MainUIScripts : MonoBehaviour
                 blink = true;
             }
         }
+    }
+
+    public void ChangeSceneByCreate()
+    {
+        SceneManager.LoadScene("MakingRoom");
     }
 }
 
