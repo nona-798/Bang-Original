@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Mirror;
 public class CreateRoomScripts : MonoBehaviour
 {
+    [SerializeField]
+    private Image Loading;
     bool done;
     // Start is called before the first frame update
     void Start()

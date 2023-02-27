@@ -17,6 +17,10 @@ public class MainUIScripts : MonoBehaviour
     private Image IntroUI;
     [SerializeField]
     private Image mainUI;
+    [SerializeField]
+    private InputField playerName;
+    [SerializeField]
+    private InputField roomNum;
 
     float scroll = 1.0f;
     float alpha = 0.05f;
@@ -107,6 +111,18 @@ public class MainUIScripts : MonoBehaviour
                 blink = true;
             }
         }
+    }
+
+    public string GetPlayerName()
+    {
+        string name = playerName.text;
+        return name;
+    }
+
+    public string GetRoomNumber()
+    {
+        string number = roomNum.text;
+        return number;
     }
 
     public void ChangeSceneByCreate()

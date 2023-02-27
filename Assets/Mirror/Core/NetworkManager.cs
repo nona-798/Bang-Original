@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 
 namespace Mirror
 {
+   
     public enum PlayerSpawnMethod { Random, RoundRobin }
     public enum NetworkManagerMode { Offline, ServerOnly, ClientOnly, Host }
 
@@ -414,7 +415,6 @@ namespace Mirror
                 Debug.LogWarning("Server or Client already started.");
                 return;
             }
-
             mode = NetworkManagerMode.Host;
 
             // StartHost is inherently ASYNCHRONOUS (=doesn't finish immediately)
@@ -440,7 +440,6 @@ namespace Mirror
 
             // setup server first
             SetupServer();
-
             // scene change needed? then change scene and spawn afterwards.
             // => BEFORE host client connects. if client auth succeeds then the
             //    server tells it to load 'onlineScene'. we can't do that if
