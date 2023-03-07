@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7871384614830816280}
   - component: {fileID: 4923008297890860301}
   - component: {fileID: 4401922578787711237}
+  - component: {fileID: 3327711903711071253}
   m_Layer: 0
   m_Name: Lobby Player Charactor
   m_TagString: Untagged
@@ -115,9 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
-  syncInterval: 0
+  syncInterval: 0.1
   target: {fileID: 4758887878090107288}
   clientAuthority: 1
   syncPosition: 1
@@ -132,3 +133,21 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &3327711903711071253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940810450422904885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae242548af92e4e8adf5fce8bdeb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  showRoomGUI: 1
+  readyToBegin: 0
+  index: 0
