@@ -20,30 +20,14 @@ public class MainUIScripts : MonoBehaviour
     [SerializeField]
     private InputField roomNum;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void OnlineScene()
     {
         BackGround.gameObject.SetActive(false);
-        mainUI.gameObject.SetActive(false); // main visible
-        onlineUI.gameObject.SetActive(true);
     }
 
     public void CloseOnlineScene()
     {
-        onlineUI.gameObject.SetActive(false);
         BackGround.gameObject.SetActive(true);
-        mainUI.gameObject.SetActive(true);
     }
 }
 
